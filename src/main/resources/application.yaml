@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: JoaoPedro_Jacob_AT_Java
+  datasource:
+    url: jdbc:h2:mem:campeonato
+    username: jp
+    password: 123
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  sql:
+    init:
+      mode: always
