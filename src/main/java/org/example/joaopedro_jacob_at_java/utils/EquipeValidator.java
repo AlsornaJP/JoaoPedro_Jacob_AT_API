@@ -1,5 +1,6 @@
 package org.example.joaopedro_jacob_at_java.utils;
 
+import org.example.joaopedro_jacob_at_java.exception.EquipeInvalidaException;
 import org.example.joaopedro_jacob_at_java.exception.NomeAlreadyExistsException;
 import org.example.joaopedro_jacob_at_java.exception.SiglaAlreadyExistsException;
 import org.example.joaopedro_jacob_at_java.model.DTO.EquipeDTO;
@@ -22,6 +23,15 @@ public class EquipeValidator {
         if(existeSigla(equipe)){
             throw new SiglaAlreadyExistsException();
         }
+    }
+
+    public void validarCamposAtualizaveis(EquipeDTO equipe) {
+        if (equipe.getCategoria() == null || equipe.getCategoria().isBlank()) throw new EquipeInvalidaException("categoria: não pode ser vazio");
+        if (equipe.getCapitao() == null || equipe.getCapitao().isBlank()) throw new EquipeInvalidaException("capitao: não pode ser vazio");
+        if (equipe.getTecnico() == null || equipe.getTecnico().isBlank()) throw new EquipeInvalidaException("tecnico: não pode ser vazio");
+        if (equipe.getQuantidadeDeAtletas() <= 0) throw new EquipeInvalidaException("quantidadeDeAtletas: deve ser maior que zero");
+        if (equipe.getStatus() == null) throw new EquipeInvalidaException("status: não pode ser nulo");
+        
     }
 
     public boolean existeNome(EquipeDTO equipe){return this.equipeRepository.existsByNomeAndModalidade(equipe.getNome(),equipe.getModalidade());}

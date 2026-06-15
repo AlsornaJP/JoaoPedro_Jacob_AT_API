@@ -20,7 +20,7 @@ public class EquipeEntity {
     @Column(nullable = false, unique = true)
     private String nome;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 3)
     private String sigla;
 
     @Enumerated(EnumType.STRING)
@@ -57,5 +57,14 @@ public class EquipeEntity {
         this.quantidadeDeAtletas = equipeDTO.getQuantidadeDeAtletas();
         this.fundacao = equipeDTO.getFundacao();
         this.status = equipeDTO.getStatus();
+    }
+
+    public void atualizar(EquipeDTO dto) {
+        this.categoria = dto.getCategoria();
+        this.capitao = dto.getCapitao();
+        this.tecnico = dto.getTecnico();
+        this.quantidadeDeAtletas = dto.getQuantidadeDeAtletas();
+        this.fundacao = dto.getFundacao();
+        this.status = dto.getStatus();
     }
 }
